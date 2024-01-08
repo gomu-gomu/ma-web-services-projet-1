@@ -1,6 +1,6 @@
-# Title
+# Web Services Project 1
 
-Exercices are inside of the [tp.pdf](./assets/tp.pdf) file.
+Exercices are inside of the [projet.pdf](./assets/projet.pdf) file.
 
 Source code is under the [src](./src/) folder
 
