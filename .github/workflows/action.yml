@@ -16,6 +16,9 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Package Manager
+      run: corepack enable
+
     - name: Build
       run: pnpm install
 
