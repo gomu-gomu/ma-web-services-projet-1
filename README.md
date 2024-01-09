@@ -1,13 +1,13 @@
 # Web Services Project 1
 
-Exercices are inside of the [projet.pdf](./assets/projet.pdf) file.
+Questions are inside of the [projet.pdf](./assets/projet.pdf) file.
 
 Source code is under the [src](./src/) folder
 
 ## Usage
 
-Solutions can be run via:
+Solutions can be run via (You'll need http-server):
 
 ```sh
-runner src/file
+npm start
 ```
