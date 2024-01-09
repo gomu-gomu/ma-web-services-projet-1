@@ -4,7 +4,9 @@
   "description": "Web Services Project 1.",
   "main": "index.js",
   "scripts": {
-    "start": "http-server . -o ./src/index.html"
+    "postinstall": "npm run dependencies",
+    "start": "http-server ./src -o",
+    "dependencies": "cp -R ./node_modules/bootstrap/dist ./src/verbose/bootstrap"
   },
   "keywords": [
     "master",

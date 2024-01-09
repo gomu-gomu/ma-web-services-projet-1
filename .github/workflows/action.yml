@@ -22,11 +22,6 @@ jobs:
     - name: Build
       run: pnpm install
 
-    - name: Dependencies
-      run: |
-        mkdir -p ./src/node_modules/bootstrap/dist
-        cp -R ./node_modules/bootstrap/dist/* ./src/node_modules/bootstrap/dist/
-
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
