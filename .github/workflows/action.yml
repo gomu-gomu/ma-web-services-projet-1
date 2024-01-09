@@ -23,7 +23,7 @@ jobs:
       run: pnpm install
 
     - name: Dependencies
-      run: cp ./node_modules/bootstrap ./src/node_modules/bootstrap
+      run: cp -r ./node_modules/bootstrap ./src/node_modules/bootstrap
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
