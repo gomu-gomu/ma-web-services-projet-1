@@ -24,8 +24,8 @@ jobs:
 
     - name: Dependencies
       run: |
-        mkdir ./src/node_modules
-        cp -r ./node_modules/bootstrap ./src/node_modules/bootstrap
+        mkdir -p ./src/node_modules/bootstrap/dist
+        cp -R ./node_modules/bootstrap/dist/* ./src/bootstrap/dist/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
