@@ -11,5 +11,8 @@
     "web-services"
   ],
   "author": "Essamadi Oussama",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
 }
