@@ -1,0 +1,48 @@
+{
+  "retina_detect": true,
+  "particles": {
+    "number": {
+      "value": 5,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "shape": {
+      "type": "image",
+      "image": {
+        "src": "images/icons/virus.png",
+        "width": 500,
+        "height": 500
+      }
+    },
+    "size": {
+      "value": 50,
+      "random": true
+    },
+    "line_linked": {
+      "enable": false
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false
+      },
+      "onclick": {
+        "enable": false
+      },
+      "resize": true
+    }
+  }
+}
