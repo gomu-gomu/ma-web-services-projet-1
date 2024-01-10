@@ -24,90 +24,106 @@
     href="styles/main.css"
   >
 
+  <link
+    rel="stylesheet"
+    href="styles/particles.css"
+  >
+
   <title>Web Service Projet 1 - Covid-19</title>
 </head>
 
 <body>
   <main>
-    <h1>Hello, world!</h1>
+    <div
+      id="particles"
+      class="particles"
+    ></div>
 
-    <div class="container text-center">
-      <div class="row">
+    <div class="container">
+      <div class="row gap-4">
         <div class="col">
-          <div
-            class="card text-bg-light mb-3"
-            style="max-width: 18rem;"
-          >
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h5 class="card-title">Light card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
+          <div class="card minimal shadow border border-0">
+            <div class="card-body text-start">
+              <h5 class="card-title">Coronavirus Cases</h5>
+              <p class="card-text">701,413,950</p>
             </div>
-          </div>
-        </div>
 
-        <div class="col">
-          <div
-            class="card text-bg-light mb-3"
-            style="max-width: 18rem;"
-          >
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h5 class="card-title">Light card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div
-            class="card text-bg-light mb-3"
-            style="max-width: 18rem;"
-          >
-            <div class="card-header">Header</div>
-            <div class="card-body">
-              <h5 class="card-title">Light card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <div
-              class="card text-bg-light mb-3"
-              style="max-width: 18rem;"
+            <img
+              alt="Chart"
+              class="card-glyph"
+              src="images/glyphs/chart.gif"
             >
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-            </div>
           </div>
+        </div>
 
-          <div class="col">
-            <div
-              class="card text-bg-light mb-3"
-              style="max-width: 18rem;"
-            >
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
+        <div class="col">
+          <div class="card minimal shadow border border-0">
+            <div class="card-body text-start">
+              <h5 class="card-title">Deaths</h5>
+              <p class="card-text">6,966,045</p>
             </div>
+
+            <img
+              alt="Death"
+              class="card-glyph"
+              src="images/glyphs/death.gif"
+            >
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card minimal shadow border border-0">
+            <div class="card-body text-start">
+              <h5 class="card-title">Recovered</h5>
+              <p class="card-text">672,369,810</p>
+            </div>
+
+            <img
+              alt="Recovery"
+              class="card-glyph"
+              src="images/glyphs/recovery.gif"
+            >
           </div>
         </div>
       </div>
+
+      <div class="row gap-4 mt-md-5 mt-4">
+        <div class="col">
+          <div class="card minimal shadow border border-0">
+            <div class="card-body text-start">
+              <h5 class="card-title">Line Chart</h5>
+              <p class="card-text">672,369,810</p>
+            </div>
+
+            <img
+              alt="Recovery"
+              class="card-glyph"
+              src="images/glyphs/recovery.gif"
+            >
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card minimal shadow border border-0">
+            <div class="card-body text-start">
+              <h5 class="card-title">Map Chart</h5>
+              <p class="card-text">672,369,810</p>
+            </div>
+
+            <img
+              alt="Recovery"
+              class="card-glyph"
+              src="images/glyphs/recovery.gif"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <script src="verbose/bootstrap//js/bootstrap.min.js"></script>
+  <script src="verbose/bootstrap/js/bootstrap.min.js"></script>
+  <script src="verbose/particles.js/particles.js"></script>
+  <script src="scripts/particles.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 
