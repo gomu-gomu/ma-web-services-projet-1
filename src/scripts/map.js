@@ -1,44 +1,48 @@
-import { populateSelect } from './utils.js';
-import { getHistoricalData } from './api.js';
+import { getVaccinationData } from './api.js';
+import { populateSelect, getDataByMonth } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
+  let mapChart;
+  const data = await getVaccinationData();
+  const countryMap = await loadCountryMap();
   const ctx = document.getElementById('chart-map');
-  const data = await getHistoricalData()
 
+  const keys = Object.keys(data[0].timeline)
+  const startYear = parseInt(keys[0], 10);
+  const endYear = parseInt(keys.slice(0).reverse()[0], 10);
+  const yearRange = Math.abs(endYear - startYear + 1);
+  const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
+
+  populateSelect('chart-map-select', years, loadChart, data);
   loadChart(data);
-  populateSelect('chart-map-select', data, () => { });
 
-  function loadData() {
-    return new Promise(resolve => {
-      fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
-        .then(e => e.json())
-        .then(data => {
-          const keys = Object.keys(data);
-          const result = keys.reduce((obj, key) => ({
-            ...obj,
-            [key]: Object.entries(data[key]).map(e => [new Date(e[0]), e[1]])
-          }), {});
-
-          resolve(result);
-        });
-    })
-  }
-
-  async function loadChart() {
-    const data = await fetch('verbose/worldatlas/countries-50m.json').then(e => e.json());
-    const world = ChartGeo.topojson.feature(data, data.objects.countries).features;
+  async function loadChart(data) {
+    const geoData = await fetch('verbose/worldatlas/countries-50m.json').then(e => e.json());
+    const world = ChartGeo.topojson.feature(geoData, geoData.objects.countries).features;
     const countries = world.map((d) => d.properties.name);
+
+    if (mapChart) {
+      mapChart.destroy();
+    }
+
+    const selectedYear = document.querySelector('#chart-map-select option:checked');
+    const year = parseInt(selectedYear.value, 10);
+
+    const datasets = [{
+      label: 'Countries',
+      data: world.map((country) => ({
+        feature: country,
+        value: getCountryData(data, country.properties.name, year)
+      }))
+    }];
+
+    // console.log(data.map(e => e.country), world.map(e => e.properties.name));
 
     mapChart = new Chart(ctx, {
       type: 'choropleth',
       data: {
+        datasets,
         labels: countries,
-        datasets: [
-          {
-            label: 'Countries',
-            data: world.map((d) => ({ feature: d, value: Math.random() }))
-          }
-        ]
       },
       options: {
         responsive: true,
@@ -53,15 +57,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         scales: {
           color: {
             axis: 'x',
-            interpolate: (v) => {
-              if (v <= 0.3) {
-                return '#dfe0ff';
-              } else if (v <= 0.5) {
-                return '#d9dbff';
-              } else if (v <= 0.8) {
-                return '#d4d6ff';
+            interpolate: (v, b) => {
+              if (v >= 0.7) {
+                return '#5d6191';
+              } else if (v >= 0.5) {
+                return '#8c8fb9';
+              } else if (v >= 0.2) {
+                return '#afb1d7';
               } else {
-                return '#ced0ff';
+                return '#dfe0ff';
               }
             }
           },
@@ -69,13 +73,24 @@ window.addEventListener('DOMContentLoaded', async () => {
             axis: 'x',
             projection: 'equirectangular'
           }
-        },
-        onClick: (_, elems) => {
-          if (elems.length > 0) {
-            console.log(elems.map((elem) => elem.element.feature));
-          }
         }
       }
     });
+  }
+
+  function getCountryData(data, countryName, year) {
+    const countryMatch = countryMap[countryName] || countryName;
+    const countryData = data.find(e => e.country.toLowerCase() === countryMatch.toLowerCase());
+
+    if (countryData) {
+      const timeline = countryData.timeline || {};
+      return getDataByMonth(timeline, year)[0];
+    } else {
+      return 0;
+    }
+  }
+
+  async function loadCountryMap() {
+    return await fetch('config/countries.json').then(e => e.json());
   }
 });

@@ -1,12 +1,18 @@
-import { populateSelect } from './utils.js';
 import { getHistoricalData } from './api.js';
+import { populateSelect, getDataByMonth } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
   let lineChart;
   const data = await getHistoricalData();
   const ctx = document.getElementById('chart-line');
 
-  populateSelect('chart-line-select', data, loadChart);
+  const keys = Object.keys(data.cases)
+  const startYear = parseInt(keys[0], 10);
+  const endYear = parseInt(keys.slice(0).reverse()[0], 10);
+  const yearRange = Math.abs(endYear - startYear + 1);
+  const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
+
+  populateSelect('chart-line-select', years, loadChart, data);
   loadChart(data);
 
   function loadChart(data) {
@@ -21,7 +27,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       const dataset = {
         fill: false,
         tension: 0.4,
-        data: getDatabyMonth(data[key], year)
+        data: getDataByMonth(data[key], year)
       };
 
       switch (key) {
@@ -56,20 +62,6 @@ window.addEventListener('DOMContentLoaded', async () => {
       data: {
         datasets,
         labels: months
-        // {
-        //   fill: false,
-        //   tension: 0.4,
-        //   label: 'Cases',
-        //   borderColor: 'rgb(106, 109, 156)',
-        //   data: [65, 59, 80, 81, 56, 55, 40, 100, 32, 69, 19, 55]
-        // },
-        // {
-        //   fill: false,
-        //   tension: 0.4,
-        //   label: 'Recovered',
-        //   borderColor: 'rgb(147, 153, 217)',
-        //   data: [45, 29, 60, 78, 40, 13, 38, 75, 30, 59, 16, 30]
-        // }
       },
       options: {
         responsive: true,
@@ -104,20 +96,5 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
       }
     });
-  }
-
-  function getDatabyMonth(data, year) {
-    const monthlyData = [];
-
-    console.log(data);
-    for (const [key, currentStats] of Object.entries(data[year])) {
-      const month = parseInt(key, 10);
-      const previousStats = month > 1 ? data[year][month - 1] : (data[year - 1] || { 12: 0 })[12];
-      const monthlyStats = Math.abs(currentStats - previousStats);
-
-      monthlyData.push(monthlyStats)
-    }
-
-    return monthlyData;
   }
 });
