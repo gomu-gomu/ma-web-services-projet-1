@@ -21,6 +21,7 @@
     "bootstrap": "^5.3.2",
     "chart.js": "^4.4.1",
     "chartjs-chart-geo": "^4.2.7",
+    "countup.js": "^2.8.0",
     "particles.js": "^2.0.0",
     "world-atlas": "^2.0.2"
   }
