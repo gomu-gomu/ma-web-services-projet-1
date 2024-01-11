@@ -77,7 +77,5 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-
-    console.log({ world });
   }
 });
