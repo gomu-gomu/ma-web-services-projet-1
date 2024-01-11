@@ -1,0 +1,41 @@
+.card.card-cust {
+  overflow: hidden;
+  position: relative;
+
+  backdrop-filter: blur(4px);
+  background: linear-gradient(to bottom left, #cbccff7a, #f0f0ff7a);
+}
+
+.card.card-cust.card-cust--spacing .card-body {
+  z-index: 1;
+  margin-top: 40px;
+}
+
+.card.card-cust .card-title {
+  color: #40415a;
+  font-size: 16px;
+}
+
+.card-cust--spacing .card-title {
+  position: relative;
+  top: 15px;
+}
+
+.card.card-cust .card-text {
+  color: #7c80b6;
+
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.card.card-cust .card-glyph {
+  position: absolute;
+  right: -7px;
+  top: 50%;
+
+  width: 150px;
+  z-index: 0;
+
+  opacity: 0.1;
+  transform: translateY(-50%);
+}
