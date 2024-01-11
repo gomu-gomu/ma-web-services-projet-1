@@ -102,14 +102,14 @@
           <div class="card card-cust card-cust--chart shadow border border-0">
             <div class="card-head row p-4">
               <div class="col">
-                <h5 class="card-title">Recovery by Year</h5>
+                <h5 class="card-title">Yearly Recovery Rates by Year</h5>
               </div>
 
               <div class="col">
                 <select
                   class="form-select"
                   id="chart-recovery-select"
-                  aria-label="Default select example"
+                  aria-label="Year list"
                 >
                 </select>
               </div>
@@ -125,17 +125,28 @@
         </div>
 
         <div class="col">
-          <div class="card card-cust shadow border border-0">
-            <div class="card-body text-start">
-              <h5 class="card-title">Map Chart</h5>
-              <p class="card-text">672,369,810</p>
+          <div class="card card-cust card-cust--chart shadow border border-0">
+            <div class="card-head row p-4">
+              <div class="col">
+                <h5 class="card-title">Yearly Cases by Country</h5>
+              </div>
+
+              <div class="col">
+                <select
+                  class="form-select"
+                  id="chart-country-select"
+                  aria-label="Year list"
+                >
+                </select>
+              </div>
             </div>
 
-            <img
-              alt="Recovery"
-              class="card-glyph"
-              src="images/glyphs/recovery.gif"
-            >
+            <div class="card-body">
+              <canvas
+                class="chart"
+                id="chart-map"
+              ></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -145,9 +156,11 @@
   <script src="verbose/bootstrap/js/bootstrap.min.js"></script>
   <script src="verbose/particles.js/particles.js"></script>
   <script src="verbose/chart.js/chart.umd.js"></script>
+  <script src="verbose/chart.js/index.umd.min.js"></script>
 
   <script src="scripts/particles.js"></script>
   <script src="scripts/chart.js"></script>
+  <script src="scripts/map.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 

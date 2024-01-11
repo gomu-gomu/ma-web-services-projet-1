@@ -3,6 +3,31 @@
   align-items: center;
 }
 
+.card.card-cust.card-cust--chart .card-head .col .form-select {
+  cursor: pointer;
+
+  width: 100px;
+  margin-left: auto;
+
+  color: #40415a;
+  background-color: #ced0ff;
+
+
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+.card.card-cust.card-cust--chart .card-head .col .form-select:hover {
+  background-color: #bcbeff;
+}
+
 .card.card-cust.card-cust--chart .card-head .col .card-title {
   margin: 0;
+}
+
+.card.card-cust.card-cust--chart .card-body .chart {
+  width: 100%;
+  height: 100%;
+
+  display: block;
 }
