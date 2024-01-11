@@ -48,9 +48,34 @@ window.addEventListener('DOMContentLoaded', () => {
         ]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
         scales: {
+          x: {
+            beginAtZero: true,
+            grid: {
+              drawBorder: false,
+              display: false
+            },
+            ticks: {
+              color: 'rgba(147, 153, 217, 0.5)'
+            }
+          },
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            grid: {
+              display: false,
+              drawBorder: false,
+              color: 'rgba(147, 153, 217, 0.1)'
+            },
+            ticks: {
+              color: 'rgba(147, 153, 217, 0.5)'
+            }
           }
         }
       }
