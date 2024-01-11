@@ -26,6 +26,16 @@
 
   <link
     rel="stylesheet"
+    href="styles/card.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles/chart.css"
+  >
+
+  <link
+    rel="stylesheet"
     href="styles/particles.css"
   >
 
@@ -42,7 +52,7 @@
     <div class="container">
       <div class="row gap-4">
         <div class="col">
-          <div class="card minimal shadow border border-0">
+          <div class="card card-cust card-cust--spacing shadow border border-0">
             <div class="card-body text-start">
               <h5 class="card-title">Coronavirus Cases</h5>
               <p class="card-text">701,413,950</p>
@@ -57,7 +67,7 @@
         </div>
 
         <div class="col">
-          <div class="card minimal shadow border border-0">
+          <div class="card card-cust card-cust--spacing shadow border border-0">
             <div class="card-body text-start">
               <h5 class="card-title">Deaths</h5>
               <p class="card-text">6,966,045</p>
@@ -72,7 +82,7 @@
         </div>
 
         <div class="col">
-          <div class="card minimal shadow border border-0">
+          <div class="card card-cust card-cust--spacing shadow border border-0">
             <div class="card-body text-start">
               <h5 class="card-title">Recovered</h5>
               <p class="card-text">672,369,810</p>
@@ -89,22 +99,33 @@
 
       <div class="row gap-4 mt-md-5 mt-4">
         <div class="col">
-          <div class="card minimal shadow border border-0">
-            <div class="card-body text-start">
-              <h5 class="card-title">Line Chart</h5>
-              <p class="card-text">672,369,810</p>
+          <div class="card card-cust card-cust--chart shadow border border-0">
+            <div class="card-head row p-4">
+              <div class="col">
+                <h5 class="card-title">Recovery by Year</h5>
+              </div>
+
+              <div class="col">
+                <select
+                  class="form-select"
+                  id="chart-recovery-select"
+                  aria-label="Default select example"
+                >
+                </select>
+              </div>
             </div>
 
-            <img
-              alt="Recovery"
-              class="card-glyph"
-              src="images/glyphs/recovery.gif"
-            >
+            <div class="card-body">
+              <canvas
+                class="chart"
+                id="chart-line"
+              ></canvas>
+            </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="card minimal shadow border border-0">
+          <div class="card card-cust shadow border border-0">
             <div class="card-body text-start">
               <h5 class="card-title">Map Chart</h5>
               <p class="card-text">672,369,810</p>
@@ -123,7 +144,10 @@
 
   <script src="verbose/bootstrap/js/bootstrap.min.js"></script>
   <script src="verbose/particles.js/particles.js"></script>
+  <script src="verbose/chart.js/chart.umd.js"></script>
+
   <script src="scripts/particles.js"></script>
+  <script src="scripts/chart.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 

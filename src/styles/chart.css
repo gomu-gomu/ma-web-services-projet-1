@@ -1,0 +1,8 @@
+.card.card-cust.card-cust--chart .card-head .col {
+  display: flex;
+  align-items: center;
+}
+
+.card.card-cust.card-cust--chart .card-head .col .card-title {
+  margin: 0;
+}
