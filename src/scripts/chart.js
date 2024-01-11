@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
+  let lineChart = null;
+  const ctx = document.getElementById('chart-line');
 
   populateSelect();
   loadChart();
@@ -23,10 +25,9 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function loadChart() {
-    const ctx = document.getElementById('chart-line');
     const months = Array(12).fill(1).map((e, i) => Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(`${e + i}`)));
 
-    new Chart(ctx, {
+    lineChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: months,
@@ -49,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false
