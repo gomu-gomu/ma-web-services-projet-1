@@ -51,6 +51,20 @@ window.addEventListener('DOMContentLoaded', () => {
           },
         },
         scales: {
+          color: {
+            axis: 'x',
+            interpolate: (v) => {
+              if (v <= 0.3) {
+                return '#dfe0ff';
+              } else if (v <= 0.5) {
+                return '#d9dbff';
+              } else if (v <= 0.8) {
+                return '#d4d6ff';
+              } else {
+                return '#ced0ff';
+              }
+            }
+          },
           projection: {
             axis: 'x',
             projection: 'equirectangular'
