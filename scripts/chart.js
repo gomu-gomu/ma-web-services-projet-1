@@ -1,30 +1,27 @@
-window.addEventListener('DOMContentLoaded', () => {
-  let lineChart = null;
+window.addEventListener('DOMContentLoaded', async () => {
   const ctx = document.getElementById('chart-line');
+  const data = await loadData();
 
-  populateSelect();
-  loadChart();
+  loadChart(data);
+  populateSelect(data);
 
-  function populateSelect() {
-    const selectElement = document.getElementById('chart-recovery-select');
+  function loadData() {
+    return new Promise(resolve => {
+      fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
+        .then(e => e.json())
+        .then(data => {
+          const keys = Object.keys(data);
+          const result = keys.reduce((obj, key) => ({
+            ...obj,
+            [key]: Object.entries(data[key]).map(e => [new Date(e[0]), e[1]])
+          }), {});
 
-    const startYear = 2019;
-    const endYear = new Date().getFullYear();
-    const yearRange = Math.abs(endYear - startYear + 1);
-    const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
-
-    for (const year of years) {
-      const optionElement = document.createElement('option');
-
-      optionElement.value = year;
-      optionElement.innerText = year.toString();
-      optionElement.selected = year === endYear;
-
-      selectElement.appendChild(optionElement);
-    }
+          resolve(result);
+        });
+    })
   }
 
-  function loadChart() {
+  function loadChart(data) {
     const months = Array(12).fill(1).map((e, i) => Intl.DateTimeFormat('en', { month: 'long' }).format(new Date(`${e + i}`)));
 
     lineChart = new Chart(ctx, {
@@ -81,5 +78,24 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+  }
+
+  function populateSelect(data) {
+    const selectElement = document.getElementById('chart-line-select');
+
+    const startYear = data.cases[0][0].getFullYear();
+    const endYear = data.cases.slice(0).reverse()[0][0].getFullYear();
+    const yearRange = Math.abs(endYear - startYear + 1);
+    const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
+
+    for (const year of years) {
+      const optionElement = document.createElement('option');
+
+      optionElement.value = year;
+      optionElement.innerText = year.toString();
+      optionElement.selected = year === endYear;
+
+      selectElement.appendChild(optionElement);
+    }
   }
 });
