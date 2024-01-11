@@ -57,7 +57,9 @@ window.addEventListener('DOMContentLoaded', () => {
           }
         },
         onClick: (_, elems) => {
-          console.log(elems.map((elem) => elem.element.feature));
+          if (elems.length > 0) {
+            console.log(elems.map((elem) => elem.element.feature));
+          }
         }
       }
     });
