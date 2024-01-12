@@ -13,8 +13,13 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-
+  
+  margin: 20px 0;
   color: #53567e;
+}
+
+.modal .modal-body > * {
+  margin-top: -10px;
 }
 
 .modal .loader {
