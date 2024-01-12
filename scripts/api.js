@@ -60,3 +60,22 @@ export function getVaccinationData() {
       });
   });
 }
+
+export function getCountryData() {
+  return new Promise(resolve => {
+    fetch('https://disease.sh/v3/covid-19/historical?lastdays=all')
+      .then(e => e.json())
+      .then(data => {
+        const result = data.map(country => ({
+          ...country,
+          timeline: Object
+            .entries(country.timeline)
+            .filter(e => e[0] !== 'recovered')
+            .map(e => ({ [e[0]]: Object.values(e[1]).reverse()[0] }))
+            .reduce((obj, e) => ({ ...obj, ...e }), {})
+        })).sort((a, b) => b.timeline.cases - a.timeline.cases);
+
+        resolve(result);
+      });
+  });
+}

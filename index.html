@@ -54,7 +54,7 @@
       class="particles"
     ></div>
 
-    <div class="container">
+    <div class="container my-2 my-sm-4 my-md-5">
       <div class="row gap-4">
         <div class="col">
           <div class="card card-cust card-cust--spacing shadow border border-0">
@@ -168,24 +168,44 @@
       <div class="row gap-4 mt-md-5 mt-4">
         <div class="col">
           <div class="card card-cust card-cust--chart shadow border border-0">
+            <div class="card-head row p-4">
+              <div class="col">
+                <h5 class="card-title">Countries and Provinces Ranked by Total Cases</h5>
+              </div>
+            </div>
+
             <div class="card-body">
               <table class="table table-striped">
                 <thead class="table-light">
                   <tr>
-                    <th scope="col">Country</th>
-                    <th scope="col">Total Cases</th>
-                    <th scope="col">Total Deaths</th>
-                    <th scope="col">Total Recoveries</th>
+                    <th
+                      class="rank"
+                      scope="col"
+                    >#</th>
+
+                    <th
+                      class="country"
+                      scope="col"
+                    >Country</th>
+
+                    <th
+                      class="province"
+                      scope="col"
+                    >Province</th>
+
+                    <th
+                      class="cases"
+                      scope="col"
+                    >Total Cases</th>
+
+                    <th
+                      class="deaths"
+                      scope="col"
+                    >Total Deaths</th>
                   </tr>
                 </thead>
 
-                <tbody>
-                  <tr>
-                    <th scope="row">Morocco</th>
-                    <td>100</td>
-                    <td>50</td>
-                    <td>50</td>
-                  </tr>
+                <tbody id="table-body">
                 </tbody>
               </table>
             </div>
@@ -200,7 +220,6 @@
   <script src="verbose/chart.js/chart.umd.js"></script>
   <script src="verbose/chart.js/index.umd.min.js"></script>
   <script src="verbose/countup.js/countUp.umd.js"></script>
-  <script src="verbose/fuse.js/fuse.min.js"></script>
 
   <script src="scripts/particles.js"></script>
 
@@ -212,6 +231,11 @@
   <script
     type="module"
     src="scripts/chart.js"
+  ></script>
+
+  <script
+    type="module"
+    src="scripts/table.js"
   ></script>
 
   <script
