@@ -39,3 +39,27 @@
   opacity: 0.1;
   transform: translateY(-50%);
 }
+
+.card .btn {
+  width: 35px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  --bs-btn-bg: #ced0ff;
+  --bs-btn-hover-bg: #bcbeff;
+  --bs-btn-active-bg: #bcbeff;
+
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-border-color: transparent;
+}
+
+.card .btn img {
+  width: 20px;
+
+  opacity: 0.7;
+  filter: brightness(0);
+}

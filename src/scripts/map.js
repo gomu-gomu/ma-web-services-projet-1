@@ -1,5 +1,5 @@
 import { getVaccinationData } from './api.js';
-import { populateSelect, getDataByMonth, sendLoadEvent } from './utils.js';
+import { populateSelect, getDataByMonth, sendLoadEvent, toggleButton } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
   let mapChart;
@@ -12,6 +12,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   const endYear = parseInt(keys.slice(0).reverse()[0], 10);
   const yearRange = Math.abs(endYear - startYear + 1);
   const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
+
+  toggleButton('chart-map-btn', console.log);
 
   sendLoadEvent(() => {
     populateSelect('chart-map-select', years, loadChart, data);

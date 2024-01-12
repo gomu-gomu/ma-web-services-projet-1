@@ -42,3 +42,20 @@ export function sendReadyEvent() {
   const event = new CustomEvent('pageReady');
   setTimeout(() => document.dispatchEvent(event));
 }
+
+export function toggleButton(buttonId, callback) {
+  let maximized = false;
+  const btn = document.getElementById(buttonId);
+
+  btn.addEventListener('click', () => {
+    const img = btn.querySelector('img');
+    maximized = !maximized;
+
+    if (img) {
+      const iconPath = `images/icons/${maximized ? 'minimize' : 'maximize'}.svg`;
+      img.setAttribute('src', iconPath);
+    }
+
+    callback(maximized);
+  });
+}
