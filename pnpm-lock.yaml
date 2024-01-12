@@ -20,6 +20,9 @@ dependencies:
   countup.js:
     specifier: ^2.8.0
     version: 2.8.0
+  gsap:
+    specifier: ^3.12.4
+    version: 3.12.4
   particles.js:
     specifier: ^2.0.0
     version: 2.0.0
@@ -259,6 +262,10 @@ packages:
     dependencies:
       get-intrinsic: 1.2.2
     dev: true
+
+  /gsap@3.12.4:
+    resolution: {integrity: sha512-1ByAq8dD0W4aBZ/JArgaQvc0gyUfkGkP8mgAQa0qZGdpOKlSOhOf+WNXjoLimKaKG3Z4Iu6DKZtnyszqQeyqWQ==}
+    dev: false
 
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
