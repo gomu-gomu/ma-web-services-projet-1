@@ -70,3 +70,23 @@ export function toggleButton(buttonId, callback) {
     Flip.from(state, { absolute: true, duration: 0.2, ease: "power1.inOut" });
   });
 }
+
+export function resizeChart(chartId) {
+  const chart = document.getElementById(chartId);
+  const parent = chart.parentElement;
+  const grandParent = parent.parentElement;
+
+  const width = window.getComputedStyle(grandParent).width;
+  const height = window.getComputedStyle(grandParent).height;
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.target == grandParent) {
+        parent.style.width = width;
+        parent.style.height = height;
+      }
+    }
+  });
+
+  resizeObserver.observe(grandParent);
+}
