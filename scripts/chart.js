@@ -1,8 +1,9 @@
 import { getHistoricalData } from './api.js';
-import { populateSelect, getDataByMonth } from './utils.js';
+import { populateSelect, getDataByMonth, sendLoadEvent, toggleButton } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
   let lineChart;
+
   const data = await getHistoricalData();
   const ctx = document.getElementById('chart-line');
 
@@ -12,8 +13,12 @@ window.addEventListener('DOMContentLoaded', async () => {
   const yearRange = Math.abs(endYear - startYear + 1);
   const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
 
-  populateSelect('chart-line-select', years, loadChart, data);
-  loadChart(data);
+  toggleButton('chart-line-btn', console.log);
+
+  sendLoadEvent(() => {
+    populateSelect('chart-line-select', years, loadChart, data);
+    loadChart(data);
+  });
 
   function loadChart(data) {
     const datasets = [];

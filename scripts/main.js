@@ -1,13 +1,19 @@
-import { getTotalData } from './api.js';
+import { sendReadyEvent } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
-  const data = await getTotalData();
-  const keys = Object.keys(data);
+  const modalElement = document.getElementById('loader-modal');
+  const options = { keyboard: false, backdrop: false };
+  const modal = new bootstrap.Modal(modalElement, options);
 
-  for (const key of keys) {
-    const number = data[key];
-    const counter = new countUp.CountUp(`stat-${key}`, number);
+  let eventsRecorded = 0;
+  modal.show();
 
-    counter.start();
-  }
+  document.addEventListener('apiLoaded', (e) => {
+    ++eventsRecorded;
+
+    if (eventsRecorded === 4) {
+      modal.hide();
+      sendReadyEvent();
+    }
+  });
 });
