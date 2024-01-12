@@ -32,3 +32,39 @@
 .table th:is(.cases, .deaths) {
   text-align: right;
 }
+
+.input-group.input-group--search {
+  max-width: 300px;
+
+  margin-bottom: 0;
+  margin-left: auto;
+}
+
+.input-group.input-group--search .input-group-text {
+  padding: 8px;
+  background-color: #ced0ff;
+}
+
+.input-group.input-group--search img {
+  width: 20px;
+  opacity: 0.7;
+}
+
+.input-group.input-group--search input {
+  color: #53567e;
+  background-color: #ced0ff;
+}
+
+.input-group.input-group--search input::placeholder {
+  color: #53567e;
+  font-weight: 100;
+}
+
+.card.card-cust.card-cust--table .card-head>div {
+  display: flex;
+  align-items: center;
+}
+
+.card.card-cust.card-cust--table .card-head .card-title {
+  margin-bottom: 0;
+}

@@ -13,18 +13,18 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  
+
   margin: 20px 0;
   color: #53567e;
 }
 
-.modal .modal-body > * {
+.modal .modal-body>* {
   margin-top: -10px;
 }
 
 .modal .loader {
   height: 60px;
-
+  margin-bottom: 15px;
   transform: scale(0.5);
 
   aspect-ratio: 1;

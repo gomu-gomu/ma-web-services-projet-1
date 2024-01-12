@@ -59,7 +59,7 @@
     href="styles/particles.css"
   >
 
-  <title>Web Service Projet 1 - Covid-19</title>
+  <title>Web Service Projet 1 - Covid-19 Stats</title>
 </head>
 
 <body>
@@ -252,11 +252,34 @@
           <div
             data-aos="fade-up"
             data-aos-delay="600"
-            class="card card-cust card-cust--chart shadow border border-0"
+            class="card card-cust card-cust--table shadow border border-0"
           >
             <div class="card-head row p-4">
-              <div class="col">
+              <div class="col col-md-8">
                 <h5 class="card-title">Classement des Pays et des Provinces en Fonction du Nombre Total de Cas</h5>
+              </div>
+
+              <div class="col col-md-4">
+                <div class="input-group input-group--search">
+                  <span
+                    class="input-group-text"
+                    id="basic-addon1"
+                  >
+                    <img
+                      alt="Search Icon"
+                      src="images/icons/search.svg"
+                    >
+                  </span>
+
+                  <input
+                    type="search"
+                    class="form-control"
+                    id="table-search-input"
+                    placeholder="Recherche de pays..."
+                    aria-label="Search"
+                    aria-describedby="basic-addon1"
+                  >
+                </div>
               </div>
             </div>
 
