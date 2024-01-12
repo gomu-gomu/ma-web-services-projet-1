@@ -2,9 +2,38 @@ body {
   background-color: #f0f0ff;
 }
 
-/* .container {
+a {
   position: relative;
-} */
+  display: inline-block;
+
+  padding: 0 5px;
+
+  color: #656894;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a::before {
+  content: '';
+  z-index: -1;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 0;
+  height: 100%;
+
+  border-radius: 6px;
+  background-color: #d3d6ff;
+
+  transition-duration: 0.2s;
+  transition-property: width;
+}
+
+a:hover::before {
+  width: 100%;
+}
 
 *::selection {
   background-color: #d3d6ff;

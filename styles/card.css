@@ -63,3 +63,27 @@
   opacity: 0.7;
   filter: brightness(0);
 }
+
+.card.card-cust .title {
+  color: #7c80b6;
+  font-weight: bold;
+
+  display: inline-block;
+  border-bottom: 5px solid #ced0ff;
+
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+}
+
+.card.card-cust.card-cust--title p {
+  color: #656894;
+}
+
+.card.card-cust.card-cust--title p span {
+  border-radius: 6px;
+  background-color: #dadbff;
+
+  padding: 2px 6px;
+
+  font-weight: bold;
+}
