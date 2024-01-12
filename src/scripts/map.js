@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const yearRange = Math.abs(endYear - startYear + 1);
   const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
 
-  toggleButton('chart-map-btn', console.log);
+  toggleButton('chart-map-btn');
 
   sendLoadEvent(() => {
     populateSelect('chart-map-select', years, loadChart, data);
