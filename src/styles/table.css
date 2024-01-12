@@ -24,6 +24,18 @@
   white-space: nowrap;
 }
 
+.table tbody tr {
+  animation-duration: 0.3s;
+  animation-name: slide-in;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.table tbody tr[visible="false"] {
+  display: none;
+}
+
 .table tbody td {
   text-transform: capitalize;
 }
@@ -67,4 +79,16 @@
 
 .card.card-cust.card-cust--table .card-head .card-title {
   margin-bottom: 0;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

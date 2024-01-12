@@ -3,6 +3,9 @@ import { sendLoadEvent } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const data = await getCountryData();
+  const searchInput = document.getElementById('table-search-input');
+
+  let searchTerm = (searchInput.value || '').trim().toLowerCase();
 
   populateTable(data);
   sendLoadEvent(() => {
@@ -19,6 +22,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       }
     }, 600);
   });
+
+  searchInput.addEventListener('keyup', searchTable);
+  searchInput.addEventListener('search', searchTable);
 
   function populateTable(data) {
     const tableBodyElement = document.getElementById('table-body');
@@ -52,12 +58,40 @@ window.addEventListener('DOMContentLoaded', async () => {
       proviceElement.textContent = stat.province || 'All';
       proviceElement.classList.add('province');
 
+      rowElement.setAttribute('visible', true);
       rowElement.appendChild(rankElement);
       rowElement.appendChild(countryElement);
       rowElement.appendChild(proviceElement);
       rowElement.appendChild(casesElement);
       rowElement.appendChild(deathsElement);
       tableBodyElement.appendChild(rowElement);
+    }
+  }
+
+  function searchTable(e) {
+    const value = (e.target.value || '').trim().toLowerCase();
+
+    if (searchTerm !== value) {
+      searchTerm = value;
+
+      const tableBodyElement = document.getElementById('table-body');
+      const rowElements = tableBodyElement.querySelectorAll('tr');
+
+      for (const rowElement of rowElements) {
+        if (searchTerm.length > 0) {
+          const countryelement = rowElement.querySelector('.country');
+          const countryName = countryelement.textContent.trim().toLowerCase();
+
+          if (countryName.includes(searchTerm) || searchTerm.includes(countryName)) {
+            rowElement.setAttribute('visible', true);
+          } else {
+            rowElement.setAttribute('visible', false);
+          }
+        }
+        else {
+          rowElement.setAttribute('visible', true);
+        }
+      }
     }
   }
 });
