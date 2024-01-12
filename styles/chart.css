@@ -25,9 +25,6 @@
   margin: 0;
 }
 
-.card.card-cust.card-cust--chart .card-body .chart {
-  width: 100%;
-  height: 100%;
-
-  display: block;
+.card.card-cust.card-cust--chart .card-body {
+  position: relative;
 }

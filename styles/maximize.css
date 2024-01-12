@@ -26,4 +26,20 @@
   height: 95%;
 
   margin: 100px;
+
+  transition-duration: 0.2s;
+  transition-property: width height margin;
+}
+
+.maximizeable.maximized>.card .card-body {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 876px) {
+  .maximizeable.maximized>.card {
+    width: 100%;
+    height: 100%;
+
+    margin: 10px;
+  }
 }

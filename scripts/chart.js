@@ -1,5 +1,5 @@
 import { getHistoricalData } from './api.js';
-import { populateSelect, getDataByMonth, sendLoadEvent, toggleButton } from './utils.js';
+import { populateSelect, getDataByMonth, sendLoadEvent, toggleButton, resizeChart } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
   let lineChart;
@@ -13,6 +13,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const yearRange = Math.abs(endYear - startYear + 1);
   const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
 
+  resizeChart('chart-line');
   toggleButton('chart-line-btn');
 
   sendLoadEvent(() => {

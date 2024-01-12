@@ -1,13 +1,16 @@
+.table-responsive {
+  margin-top: -15px;
+}
+
 .table {
   margin-bottom: 0;
-  margin-top: -15px;
 
   overflow: hidden;
   border-radius: 10px;
 
   --bs-table-color: #53567e;
   --bs-table-striped-color: #53567e;
-  
+
   --bs-table-bg: #dfdfff;
   --bs-table-striped-bg: #e6e6ff;
 }
@@ -15,6 +18,10 @@
 .table thead {
   --bs-table-bg: #CED0FF;
   --bs-table-color: #53567e;
+}
+
+.table thead th {
+  white-space: nowrap;
 }
 
 .table tbody td {
