@@ -56,6 +56,17 @@ export function toggleButton(buttonId, callback) {
       img.setAttribute('src', iconPath);
     }
 
-    callback(maximized);
+    const parent = btn.closest('.maximizeable');
+    const state = Flip.getState(parent);
+
+    if (parent) {
+      if (maximized) {
+        parent.classList.add('maximized');
+      } else {
+        parent.classList.remove('maximized');
+      }
+    }
+
+    Flip.from(state, { absolute: true, duration: 0.2, ease: "power1.inOut" });
   });
 }
