@@ -1,3 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-  AOS.init();
+  document.addEventListener('pageReady', () => {
+    AOS.init({ once: true });
+  })
 });

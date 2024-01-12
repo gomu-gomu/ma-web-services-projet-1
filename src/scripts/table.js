@@ -1,8 +1,24 @@
 import { getCountryData } from './api.js';
+import { sendLoadEvent } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
   const data = await getCountryData();
+
   populateTable(data);
+  sendLoadEvent(() => {
+    setTimeout(() => {
+      for (let i = 0; i < data.length; ++i) {
+        const rank = i + 1;
+        const stat = data[i];
+
+        const casesCounter = new countUp.CountUp(`td-cases-${rank}`, stat.timeline.cases);
+        const deathsCounter = new countUp.CountUp(`td-deaths-${rank}`, stat.timeline.deaths);
+
+        casesCounter.start();
+        deathsCounter.start();
+      }
+    }, 600);
+  });
 
   function populateTable(data) {
     const tableBodyElement = document.getElementById('table-body');
@@ -42,12 +58,6 @@ window.addEventListener('DOMContentLoaded', async () => {
       rowElement.appendChild(casesElement);
       rowElement.appendChild(deathsElement);
       tableBodyElement.appendChild(rowElement);
-
-      const casesCounter = new countUp.CountUp(`td-cases-${rank}`, stat.timeline.cases);
-      const deathsCounter = new countUp.CountUp(`td-deaths-${rank}`, stat.timeline.deaths);
-
-      casesCounter.start();
-      deathsCounter.start();
     }
   }
 });

@@ -1,5 +1,5 @@
 import { getVaccinationData } from './api.js';
-import { populateSelect, getDataByMonth } from './utils.js';
+import { populateSelect, getDataByMonth, sendLoadEvent } from './utils.js';
 
 window.addEventListener('DOMContentLoaded', async () => {
   let mapChart;
@@ -13,8 +13,10 @@ window.addEventListener('DOMContentLoaded', async () => {
   const yearRange = Math.abs(endYear - startYear + 1);
   const years = Array(yearRange).fill(startYear).map((_, i) => startYear + i);
 
-  populateSelect('chart-map-select', years, loadChart, data);
-  loadChart(data);
+  sendLoadEvent(() => {
+    populateSelect('chart-map-select', years, loadChart, data);
+    loadChart(data);
+  });
 
   async function loadChart(data) {
     const geoData = await fetch('verbose/worldatlas/countries-50m.json').then(e => e.json());
@@ -35,8 +37,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         value: getCountryData(data, country.properties.name, year)
       }))
     }];
-
-    // console.log(data.map(e => e.country), world.map(e => e.properties.name));
 
     mapChart = new Chart(ctx, {
       type: 'choropleth',
