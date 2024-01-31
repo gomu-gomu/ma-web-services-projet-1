@@ -90,3 +90,28 @@ export function resizeChart(chartId) {
 
   resizeObserver.observe(grandParent);
 }
+
+export function fetchData(url, key) {
+  const timeout = 3000;
+
+  return new Promise(resolve => {
+    const timeoutFn = setTimeout(() => {
+      console.log(`[Fetch] '${key}' request timeout, returning cached data instead!`);
+
+      fetch(`cache/${key}.json`)
+        .then(e => e.json())
+        .then(resolve);
+
+    }, timeout);
+
+    fetch(url)
+      .then(e => e.json())
+      .then(e => {
+        if (timeoutFn) {
+          clearTimeout(timeoutFn);
+        }
+
+        resolve(e);
+      });
+  });
+}
