@@ -3,6 +3,7 @@ import { populateSelect, getDataByMonth, sendLoadEvent, toggleButton, resizeChar
 
 window.addEventListener('DOMContentLoaded', async () => {
   let mapChart;
+
   const data = await getVaccinationData();
   const countryMap = await loadCountryMap();
   const ctx = document.getElementById('chart-map');

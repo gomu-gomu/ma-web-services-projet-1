@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const data = await getHistoricalData();
   const ctx = document.getElementById('chart-line');
 
-  const keys = Object.keys(data.cases)
+  const keys = Object.keys(data.cases);
   const startYear = parseInt(keys[0], 10);
   const endYear = parseInt(keys.slice(0).reverse()[0], 10);
   const yearRange = Math.abs(endYear - startYear + 1);
