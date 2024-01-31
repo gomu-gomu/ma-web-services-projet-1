@@ -1,12 +1,13 @@
+import { fetchData } from './utils.js';
+
 export function getTotalData() {
   return new Promise(async resolve => {
-    const data = await fetch('https://disease.sh/v3/covid-19/all')
-      .then(e => e.json())
+    const data = await fetchData('https://disease.sh/v3/covid-19/all', 'getTotalData')
       .then(e => ({
         cases: e.cases,
         deaths: e.deaths,
         recovered: e.recovered
-      }))
+      }));
 
     resolve(data);
   })
@@ -14,8 +15,7 @@ export function getTotalData() {
 
 export function getHistoricalData() {
   return new Promise(resolve => {
-    fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
-      .then(e => e.json())
+    fetchData('https://disease.sh/v3/covid-19/historical/all?lastdays=all', 'getHistoricalData')
       .then(data => {
         const keys = Object.keys(data);
         const result = keys.reduce((obj, key) => ({
@@ -39,8 +39,7 @@ export function getHistoricalData() {
 
 export function getVaccinationData() {
   return new Promise(resolve => {
-    fetch('https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=all')
-      .then(e => e.json())
+    fetchData('https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=all', 'getVaccinationData')
       .then(data => {
         const result = data.map(country => ({
           ...country,
@@ -63,8 +62,7 @@ export function getVaccinationData() {
 
 export function getCountryData() {
   return new Promise(resolve => {
-    fetch('https://disease.sh/v3/covid-19/historical?lastdays=all')
-      .then(e => e.json())
+    fetchData('https://disease.sh/v3/covid-19/historical?lastdays=all', 'getCountryData')
       .then(data => {
         const result = data.map(country => ({
           ...country,
