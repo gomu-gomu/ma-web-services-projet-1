@@ -98,7 +98,7 @@ export function fetchData(url, key) {
     const timeoutFn = setTimeout(() => {
       console.log(`[Fetch] '${key}' request timeout, returning cached data instead!`);
 
-      fetch(`cache/${key}.json`)
+      fetch(`./cache/${key}.json`)
         .then(e => e.json())
         .then(resolve);
 
